@@ -28,7 +28,7 @@ app.put('/api/articles/:name/upvote', async (req, res) => {
     let article = await db.collection('articles').findOne({ name: name })
 
     if (article) {
-        res.json(`Total upvotes: ${article.upvotes}`);
+        res.json(article);
     } else {
         res.json({ error: 'Article not found' });
     }
@@ -57,7 +57,7 @@ app.post('/api/articles/:name/comment', async (req, res) => {
     let article = await db.collection('articles').findOne({ name: name })
 
     if (article) {
-        res.json(article.comments);
+        res.json(article);
     } else {
         res.json({ error: 'Article not found' });
     }
